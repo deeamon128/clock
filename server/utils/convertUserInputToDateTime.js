@@ -1,9 +1,13 @@
 const convertUserInputToDateTime = (userInput) => {
   const date = new Date();
-  let hours = Number(userInput.split(":")[0]);
-  if (hours === 0 && !userInput.split(":")[0].includes("0")) {
-    //midday
-    hours = 12;
+  if (!userInput) {
+    return date;
+  }
+  const hoursFromdate = userInput.split(":")[0];
+  let hours = Number(hoursFromdate);
+  if (hours === 0 && ["0", "00"].includes(hoursFromdate)) {
+    //it's midnight
+    hours = 0;
   }
 
   const minutes = Number(userInput.split(":")[1]);
