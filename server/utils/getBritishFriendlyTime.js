@@ -8,6 +8,10 @@ const getBritishFriendlyTime = (date) => {
   d.setHours(0);
   d.setMinutes(0);
   const diffFromMidnightToHour = date.getTime() - d.getTime();
+  console.log(nextHour);
+  console.log(d);
+  console.log(date);
+  console.log(currentHour);
 
   if (currentHour === 0) {
     if (diffFromMidnightToHour > 12 * 60 * 60 * 1000) {
@@ -16,7 +20,7 @@ const getBritishFriendlyTime = (date) => {
       currentHour = convertNumberToWord(currentHour);
     }
   } else if (currentHour > 12) {
-    currentHour -= 10;
+    currentHour -= 12;
     currentHour = convertNumberToWord(currentHour);
   }
 
@@ -27,7 +31,7 @@ const getBritishFriendlyTime = (date) => {
   }
 
   if (minutes === 0) {
-    return `${currentHour} o' Clock`;
+    return `${convertNumberToWord(currentHour)} o' clock`;
   }
   if (minutes === 15) {
     return `${convertNumberToWord(minutes)} past ${currentHour}`;

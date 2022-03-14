@@ -11,28 +11,35 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   card: {
-    width: 500,
-    height: 400,
+    width: 400,
+    height: 500,
+    margin: "auto",
     marginLeft: 20,
-    marginTop: 50,
+    marginTop: 20,
     backgroundColor: "#e07a5f",
     color: "white",
     borderRadius: 25,
+    transition: "0.3s",
+    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
+    "&:hover": {
+      boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
+    },
+  },
+  content: {
+    textAlign: "center",
+    marginTop: 30,
   },
   title: {
-    fontSize: 35,
+    fontSize: "50",
     flexGrow: 1,
     textAlign: "center",
-    fontFamily: "Roboto",
+    marginTop: 30,
   },
   button: {
-    marginTop: 15,
+    marginTop: 10,
     color: "white",
     backgroundColor: "#3d405b",
-    textAlign: "center",
-  },
-  textfield: {
-    color: "white";
+    paddingRight: 40,
   },
   typography: {
     marginTop: 30,
@@ -58,14 +65,13 @@ export default function CardInfo() {
     <div>
       <Card className={classes.card}>
         <CardHeader className={classes.title} title="Human Friendly Clock" />
-        <CardContent>
+        <CardContent className={classes.content}>
           <TextField
             id="outlined-basic"
-            label="insert a time"
+            label="insert a time hh:mm"
             variant="outlined"
             defaultValue="Small"
             size="small"
-            className={classes.textfield}
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
           />
@@ -77,7 +83,7 @@ export default function CardInfo() {
           >
             Get Time
           </Button>
-          <Typography variant="h4" className={classes.typography}>
+          <Typography variant="h5" className={classes.typography}>
             {time}
           </Typography>
         </CardContent>
